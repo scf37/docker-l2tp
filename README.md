@@ -10,13 +10,15 @@ It is intended for single-user usage so auth will accept any username with corre
 ##Howto
 
 1. edit /etc/sysctl.conf:
-    net.ipv4.ip_forward = 1
+
+    `net.ipv4.ip_forward = 1`
 2. refresh sysctl
-    sysctl -p
+
+    `sysctl -p`
 3. if you want to to access Internet via this VPN, run
-    iptables -t nat -A POSTROUTING -s 10.0.5.0/24 -o eth0 -j MASQUERADE
-4. 
-    docker create --name cvpn2 --restart always --privileged --net=host -v /lib/modules:/lib/modules -v /data/l2tp:/data -e L2TP_PASSWORD=helloworld -e LISTEN_ADDR=41.42.43.44 scf37/l2tp
+
+    `iptables -t nat -A POSTROUTING -s 10.0.5.0/24 -o eth0 -j MASQUERADE`
+4. `docker create --name cvpn2 --restart always --privileged --net=host -v /lib/modules:/lib/modules -v /data/l2tp:/data -e L2TP_PASSWORD=helloworld -e LISTEN_ADDR=41.42.43.44 scf37/l2tp`
 
 ##Advanced topics
 

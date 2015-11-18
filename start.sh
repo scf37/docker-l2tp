@@ -1,15 +1,21 @@
 #!/bin/bash
 
-function help {
+function head {
     echo "IPsec/L2TP VPN service"
     echo "https://github.com/scf37/l2tp"
+    echo
+}
+
+function help {
+    head
+
     echo "Runs IPsec/L2TP VPN service in docker container. Intended for home usage."
     echo "Params (must be passed via environment variables):"
     echo "    L2TP_PASSWORD password for CHAP2 authentication"
     echo "    LISTEN_ADDR Host interface IP for VPN to listen on"
-    echo "Run string: docker run -it --rm --privileged --net=host -v /lib/modules:/lib/modules -v /data:/data/l2tp scf37/l2tp"
-    
+    echo "Run string: docker run -it --rm --privileged --net=host -v /lib/modules:/lib/modules -v /data/l2tp:/data scf37/l2tp"
 }
+
 
 if [ ! -d "/lib/modules" ]; then
     echo "Error: container requires privileged mode"
@@ -46,10 +52,7 @@ do
       cat $N | envsubst '$L2TP_PASSWORD;$LISTEN_ADDR' > /$N
 done
 
-echo "IPsec/L2TP VPN service"
-echo "https://github.com/scf37/l2tp"
-echo
-
+head
 
 service ipsec start
 

@@ -57,5 +57,5 @@ head
 service ipsec start
 
 mkdir /var/run/xl2tpd
-xl2tpd -D
+exec xl2tpd -D
 

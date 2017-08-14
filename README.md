@@ -1,7 +1,7 @@
 # l2tp
 IPsec/L2TP Docker image.
 
-##W hat is this
+## What is this
 
 Docker image containing working IPSec/L2TP VPN server using CHAP2 authentication.
 
